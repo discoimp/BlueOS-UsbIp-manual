@@ -5,7 +5,7 @@ Test it first, and then add it to the startup script.
 
 # On the BlueOS device
 
-```
+
 On the BlueOS device, run the following command:
 
 ```
