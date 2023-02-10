@@ -1,3 +1,6 @@
+### See below for original description.
+The service did not function correctly, so I will write down an alternative method here.
+
 # USB/IP extension
 
 This exposes usb devices via IP, which can be used in another client device
