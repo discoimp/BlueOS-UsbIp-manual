@@ -1,5 +1,49 @@
 ### See below for original description.
-The service did not function correctly, so I will write down an alternative method here.
+The service did not function correctly, so I will write down an alternative method here given you are able to find the busid of the device you want to connect to.
+
+Test it first, and then add it to the startup script.
+
+# On the BlueOS device
+
+```
+On the BlueOS device, run the following command:
+
+```
+red-pill
+sudo apt update && sudo apt install usbip hwdata usbutils
+sudo modprobe usbip-core && sudo modprobe usbip-host
+usbip list -l
+
+```
+Find the device you want to connect to, and note the busid. In the example below, the busid is 1-1.5.
+
+```
+sudo usbip bind -b 1-1.5
+```
+The response should be something like:
+
+```
+usbip: info: bind device on busid 1-1.5: complete
+```
+Your client device should now be able to connect to the host device.
+# On topside Linux
+Run the following command if on Ubuntu 22.04:
+(if you are on 20.04 you might just have to run sudo apt install usbip)
+
+```
+sudo apt install linux-tools-virtual hwdata
+sudo update-alternatives --install /usr/local/bin/usbip usbip $(command -v ls /usr/lib/linux-tools/*/usbip | tail -n1) 20
+sudo apt update && sudo apt install usbip
+```
+I'm unsure about the the usbip here, maybe it already is installed.
+
+Feel free to replace blueos.local with the IP of your device if running custom ip.
+```
+sudo modprobe usbip-core && sudo modprobe vhci-hcd
+sudo usbip attach --remote blueos.local -b 1-1.5
+```
+
+
 
 # USB/IP extension
 
