@@ -34,7 +34,7 @@ Your client device should now be able to connect to the host device.
 # On topside Linux
 Run the following command if on Ubuntu 22.04:
 ```
-sudo apt install linux-tools-virtual hwdata linux-t
+sudo apt install linux-tools-virtual hwdata linux-tools-$(uname -r) linux-tools-generic libcanberra-gtk-module libcanberra-gtk3-module
 sudo update-alternatives --install /usr/local/bin/usbip usbip $(command -v ls /usr/lib/linux-tools/*/usbip | tail -n1) 20
 sudo apt update && sudo apt install usbip
 usbip --help
@@ -45,7 +45,7 @@ sudo apt install linux-tools-5.15.0-69-generic
 ```
 then run this and you should be good to go:
 ```
-sudo apt install linux-tools-generic canberra-gtk-module
+sudo apt install linux-tools-generic libcanberra-gtk-module libcanberra-gtk3-module
 ```
 
 # Client
